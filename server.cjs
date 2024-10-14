@@ -4,18 +4,15 @@ import bodyParser from "body-parser";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
-
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// Endpoint to get all blogs
 app.get("/api/blogs", async (req, res) => {
   const blogs = await prisma.blog.findMany();
   res.json(blogs);
 });
 
-// Endpoint to create a new blog
 app.post("/api/blogs", async (req, res) => {
   const { title, description, image, author, date } = req.body;
   const newBlog = await prisma.blog.create({
@@ -24,13 +21,12 @@ app.post("/api/blogs", async (req, res) => {
   res.json(newBlog);
 });
 
-// Endpoint to delete a blog post
 app.delete("/api/blogs/:id", async (req, res) => {
   const { id } = req.params;
   await prisma.blog.delete({ where: { id: parseInt(id) } });
   res.status(204).end();
 });
-// Endpoint to update Blog post
+
 app.put("/api/blogs/:id", async (req, res) => {
   const { id } = req.params;
   const { title, description, image, author, date } = req.body;
@@ -45,7 +41,7 @@ app.put("/api/blogs/:id", async (req, res) => {
         date: new Date(date),
       },
     });
-    res.json(updatedBlog); // Return the updated blog post
+    res.json(updatedBlog);
   } catch (error) {
     res.status(500).send(error.message);
   }
