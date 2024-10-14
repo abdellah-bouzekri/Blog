@@ -13,7 +13,7 @@ async function main() {
       date: new Date(),
     },
   });
-  console.log(newBlog);
+  //   console.log(newBlog);
 
   // Fetch all blogs
   const allBlogs = await prisma.blog.findMany();

@@ -10,14 +10,14 @@ const App = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/blogs")
+    fetch("https://blog-sooty-alpha.vercel.app/api/blogs")
       .then((response) => response.json())
       .then((data) => setBlogs(data))
       .catch((error) => console.error("Error fetching blogs:", error));
   }, []);
 
   const addBlog = (newBlog) => {
-    fetch("http://localhost:5000/api/blogs", {
+    fetch("https://blog-sooty-alpha.vercel.app/api/blogs", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newBlog),
@@ -28,7 +28,7 @@ const App = () => {
   };
 
   const deletePost = (id) => {
-    fetch(`http://localhost:5000/api/blogs/${id}`, {
+    fetch(`https://blog-sooty-alpha.vercel.app/api/blogs/${id}`, {
       method: "DELETE",
     })
       .then(() =>

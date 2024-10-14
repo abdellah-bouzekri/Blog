@@ -24,7 +24,7 @@ const Header = () => {
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            className="size-6 text-slate-900 transform-cpu">
+            className="size-6 text-slate-100 transform-cpu">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -55,7 +55,7 @@ const Header = () => {
       {/* Mobile menu */}
       {isMenuOpen && (
         <div className="md:hidden mt-4">
-          <ul className="flex flex-col w-full items-center gap-4 text-slate-600 font-medium ">
+          <ul className="flex flex-col w-full items-center gap-4 text-slate-300 font-medium ">
             <li className="hover:text-pink-600">
               <Link to="/">Home</Link>
             </li>
